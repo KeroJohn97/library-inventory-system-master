@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+<meta charset="ISO-8859-1">
+<title>Library Inventory System</title>
+
+<link rel="stylesheet"
+	  href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+	<!-- create navigation bar ( header) -->
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+						data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+						aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#" th:href="@{/}">Library Inventory System</a>
+			</div>
+			<div id="navbar" class="collapse navbar-collapse">
+				<ul class="nav navbar-nav">
+					<li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Logout</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<div class="container my-2">
+	
+	<p><a th:href = "@{/showNewInventoryForm}" class="btn btn-primary btn-sm mb-3" style="margin-top: 5%"> Add Book </a></p>
+	
+		<table border="1" class = "table table-striped table-responsive-md" >
+			<thead >
+				<tr>
+					<th>
+						Book Name
+					</th>
+					<th>
+						Author Name
+					</th>
+					<th>
+						Publisher
+					</th>
+					<th>
+						Actions
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="inventory: ${listInventories}">
+					<td th:text="${inventory.bookName}"></td>
+					<td th:text="${inventory.authorName}"></td>
+					<td th:text="${inventory.publisher}"></td>
+					<td> 
+						<a th:href="@{/showFormForUpdate/{id}(id=${inventory.id})}" class="btn btn-primary">Update</a>
+					    <a th:href="@{/deleteInventory/{id}(id=${inventory.id})}" class="btn btn-danger">Delete</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		
+		
+	</div>
+</body>
+</html>
