@@ -7,7 +7,7 @@ https://github.com/knowledgefactory4u/KnowledgeFactory
 ## How to run?
 ### springboot-jpa-thymeleaf-mysql-crud
 1. `$ clone git https://github.com/KeroJohn97/library-inventory-system-master.git`
-2. import maven project on IDE(Eclipse, IntelliJ or any)
+2. import maven project on IDE (Eclipse, IntelliJ or any)
 
 ### MySQL database configuration
 1. `create database spring_crud;`
